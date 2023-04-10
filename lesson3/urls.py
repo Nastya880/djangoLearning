@@ -1,5 +1,6 @@
 from django.urls import path
 from lesson3 import views
+from lesson3.post_view import MyTemplateView, post_page
 
 urlpatterns = [
     path('main/', views.main),
@@ -11,4 +12,6 @@ urlpatterns = [
 
     path('class-view/', views.MyView.as_view(), name='class_view'),
 
+    path('post/', MyTemplateView.as_view(), name="post"),
+    path('post/<int:number>/', post_page, name="posts_list")
 ]
