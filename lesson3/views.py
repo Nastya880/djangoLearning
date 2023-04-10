@@ -3,7 +3,6 @@ from django.http import HttpResponse, FileResponse, HttpResponseRedirect, \
     HttpResponseNotAllowed, JsonResponse
 from django.shortcuts import render
 from django.templatetags.static import static
-
 from django.views import View
 from django.template import loader
 
@@ -27,8 +26,12 @@ class MyView(View):
 
 
 def main(request):
-    test_template = loader.render_to_string("main.html")
-
+    # test_template = loader.render_to_string("main.html")
+    # test_template = loader.get_template(template_name="templates_example.html")
+    #test_template_list = loader.select_template(template_name_list=["test",
+    #                                                                "templates_example.html"])
+    test_template = loader.render_to_string("templates_example.html", context = {"str": "Test string",
+                                                                                 "int": 12})
     return HttpResponse(test_template)
 
 
